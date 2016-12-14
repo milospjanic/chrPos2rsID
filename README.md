@@ -1,1 +1,1 @@
-# chrPos2rsIDVar1
+# chrPos2rsID
