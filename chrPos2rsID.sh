@@ -40,4 +40,4 @@ cat $1.head $1.rsID.nohead > $1.rsID
 rm $1.mod
 rm $1.mod2
 rm $1.head
-$1.rsID.nohead
+rm $1.rsID.nohead
