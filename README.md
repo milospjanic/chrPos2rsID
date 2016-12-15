@@ -1,6 +1,6 @@
 # chrPos2rsID
 
-
+chrPos2rsID is a script to convert a list of genomics positions in a format: chrno_position_allele1_allele2 to SNP rsIDs. Script will append rsIDs as a column to an existing file. chrPos2rsID is useful for quick conversion of to SNP rsIDs for various downstream analysis and lookups.
 
 **Usage**
 
