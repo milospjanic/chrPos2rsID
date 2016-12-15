@@ -6,7 +6,7 @@ chrPos2rsID is a script to convert a list of genomics positions in a format: chr
 
 This script will check if the working folder ~/chrPos2rsID is present and if not it will create ~/chrPos2rsID. Next, script will go into ~/chrPos2rsID and check if dbSNP bed file for human genome hg19 is present or not, version 147 (the latest one present in the mySQL database currently), and case it is not present it will download it using mySQL from snp147Common table of hg19 dataset on genome-mysql.cse.ucsc.edu.
 
-**Note - Script chrPos2rsID.sh can be placed anywhere as well as the input file, however output will be in ~/chrPos2rsID **
+**Note - Script chrPos2rsID.sh can be placed anywhere as well as the input file, however output will be in ~/chrPos2rsID**
 
 Your input file should be formatted as:
 
