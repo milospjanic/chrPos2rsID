@@ -23,7 +23,7 @@ mysql --user=genome --host=genome-mysql.cse.ucsc.edu -A -N -D hg19 -e 'SELECT ch
 fi
 
 tabsep $SNPS
-sed 's/^/chr/g' SFJK_regions.IL_16.20161129SIG.txt | sed 's/_/\t/' | sed 's/_.//' | sed 's/_.//' > $SNPS.mod
+sed 's/^/chr/g' $SNPS | sed -e 's/_[ATCG]*/\t/' | sed -e 's/_[ATCG]*//' | sed 's/_.//' > $SNPS.mod
 sed 's/^MarkerName/chr\tposition\t/g' <(head -n1 $SNPS) > $SNPS.head
 cat $SNPS.head <(tail -n+2 $SNPS.mod) > $SNPS.mod2
 mv $SNPS.mod2 $SNPS.mod
