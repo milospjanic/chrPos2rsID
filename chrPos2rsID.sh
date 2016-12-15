@@ -23,16 +23,21 @@ mysql --user=genome --host=genome-mysql.cse.ucsc.edu -A -N -D hg19 -e 'SELECT ch
 fi
 
 tabsep $SNPS
-sed 's/^/chr/g' $SNPS | sed -e 's/_[ATCG]*/\t/' | sed -e 's/_[ATCG]*//' | sed 's/_.//' > $SNPS.mod
-sed 's/^MarkerName/chr\tposition\t/g' <(head -n1 $SNPS) > $SNPS.head
-cat $SNPS.head <(tail -n+2 $SNPS.mod) > $SNPS.mod2
-mv $SNPS.mod2 $SNPS.mod
-tabsep $SNPS.mod
-tail -n+2 $SNPS.mod > $SNPS.mod2
-head -n1 $SNPS.mod > $SNPS.head
+sed 's/^/chr/g' $SNPS | sed -e 's/_[ATCG]*/\t/' | sed -e 's/_[ATCG]*//' | sed 's/_.//' > $1.mod
+sed 's/^MarkerName/chr\tposition\t/g' <(head -n1 $SNPS) > $1.head
+cat $1.head <(tail -n+2 $1.mod) > $1.mod2
+mv $1.mod2 $1.mod
+tabsep $1.mod
+tail -n+2 $1.mod > $1.mod2
+head -n1 $1.mod > $1.head
 
 
 #find positions of snps from the input list by comparing to snpdb
-awk 'NR==FNR {h1[$1] = 1; h2[$3]=1; h3[$1$3]=$4; next} {if(h2[$2]==1 && h1[$1]==1) print h3[$1$2]"\t"$0}' snp147Common.bed $SNPS.mod2 > $SNPS.rsID.nohead
-sed '1s/^/rsID/' $SNPS.head
-cat $SNPS.head $SNPS.rsID.nohead > $SNPS.rsID
+awk 'NR==FNR {h1[$1] = 1; h2[$3]=1; h3[$1$3]=$4; next} {if(h2[$2]==1 && h1[$1]==1) print h3[$1$2]"\t"$0}' snp147Common.bed $1.mod2 > $1.rsID.nohead
+sed '1s/^/rsID/' $1.head
+cat $1.head $1.rsID.nohead > $1.rsID
+
+rm $1.mod
+rm $1.mod2
+rm $1.head
+$1.rsID.nohead
