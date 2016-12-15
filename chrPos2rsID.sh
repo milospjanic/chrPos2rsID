@@ -1,7 +1,7 @@
 #!/bin/bash
 
-FILE=~/rsID2Bed/snp147Common.bed
-DIR=~/rsID2Bed
+FILE=~/chrPos2rsID/snp147Common.bed
+DIR=~/chrPos2rsID
 SNPS=$(pwd)/$1
 echo Proccesing file:
 echo $SNPS 
@@ -10,10 +10,10 @@ echo $SNPS
 
 if [ ! -d $DIR ]
 then
-mkdir ~/rsID2Bed
+mkdir ~/chrPos2rsID
 fi
 
-cd ~/rsID2Bed
+cd ~/chrPos2rsID
 
 #check if dbsnp file exists, if not, download from snp147Common table using mysql
 
