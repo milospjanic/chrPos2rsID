@@ -34,7 +34,7 @@ head -n1 $1.mod > $1.head
 
 #find positions of snps from the input list by comparing to snpdb
 awk 'NR==FNR {h1[$1] = 1; h2[$3]=1; h3[$1$3]=$4; next} {if(h2[$2]==1 && h1[$1]==1) print h3[$1$2]"\t"$0}' snp147Common.bed $1.mod2 > $1.rsID.nohead
-sed '1s/^/rsID/' $1.head
+sed -i '1s/^/rsID/' $1.head
 cat $1.head $1.rsID.nohead > $1.rsID
 
 rm $1.mod
