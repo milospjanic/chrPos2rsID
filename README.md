@@ -23,7 +23,9 @@ MarkerName	Allele1	Allele2	Freq1	Effect	StdErr	P-value	Direction
 6_34861799_A_G	a	g	0.1452	-0.19	0.0484	8.78E-05	--	
 </pre>
 
-Next an akw code will parse your file to free up chr and position from the first column, append chr to newly formed first column, remove alleles, and perform comparison of your file and dbSNP MySQL data using 3 different hash tables in awk. Script will output a file of your input snps with rsID appended to it, separated by tab and save it as $1.rsID, $1 being first parameter provided to the script that should be the file name containing SNPs.
+Next an akw code will parse your file to free up chr and position from the first column, append chr to newly formed first column, remove alleles, and perform comparison of your file and dbSNP MySQL data using 3 different hash tables in awk. Script will output a file of your input snps with rsID appended to it, separated by tab and save it as $1.rsID, $1 being first parameter provided to the script that should be the file name containing SNPs. 
+
+Script preserves the header of the original file and adds 'rsID' as a first field and prepends it to the output file.  
 
 Output file will be placed in ~/chrPos2rsID
 
