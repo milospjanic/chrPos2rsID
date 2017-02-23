@@ -75,7 +75,7 @@ MarkerName	Allele1	Allele2	Freq1	Effect	StdErr	P-value	Direction
 ./chrPos2rsID.sh SNP.file
 
 head SNP.file.rsID
-chr	position	Allele1	Allele2	Freq1	Effect	StdErr	P-value	Direction	
+rsID	chr	position	Allele1	Allele2	Freq1	Effect	StdErr	P-value	Direction	
 rs2985	chr6	34845648	t	c	0.8545	0.1959	0.0484	5.11E-05	++	
 rs2092428	chr6	34883363	a	g	0.146	-0.1927	0.0484	6.96E-05	--	
 rs847847	chr6	34908015	t	c	0.144	-0.1931	0.0489	7.78E-05	--	
