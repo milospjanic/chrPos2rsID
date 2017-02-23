@@ -1,10 +1,10 @@
 # chrPos2rsID
 
-chrPos2rsID is a script to convert a list of genomics positions in a format: chrno_position_allele1_allele2 to SNP rsIDs. Script will append rsIDs as a column to an existing file. chrPos2rsID is useful for quick conversion of to SNP rsIDs for various downstream analysis and lookups.
+chrPos2rsID is a script to convert a list of genomics positions in a format: chrno_position_allele1_allele2 to SNP rsIDs. Script will append rsIDs as a column to an existing file. chrPos2rsID is useful for quick conversion to SNP rsIDs for various downstream analysis and lookups.
 
 **Usage**
 
-This script will check if the working folder ~/chrPos2rsID is present and if not it will create ~/chrPos2rsID. Next, script will go into ~/chrPos2rsID and check if dbSNP bed file for human genome hg19 is present or not, version 147 (the latest one present in the mySQL database currently), and case it is not present it will download it using mySQL from snp147Common table of hg19 dataset on genome-mysql.cse.ucsc.edu.
+This script will check if the working folder ~/chrPos2rsID is present and if not it will create ~/chrPos2rsID. Next, script will go into ~/chrPos2rsID and check if dbSNP bed file for human genome hg19 is present or not, version 147 (the latest one present in the mySQL database currently), and in case it is not present it will download it using mySQL from snp147Common table of hg19 dataset on genome-mysql.cse.ucsc.edu.
 
 **Note - Script chrPos2rsID.sh can be placed anywhere as well as the input file, however output will be in ~/chrPos2rsID**
 
