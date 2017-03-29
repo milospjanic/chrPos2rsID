@@ -23,7 +23,16 @@ MarkerName	Allele1	Allele2	Freq1	Effect	StdErr	P-value	Direction
 6_34861799_A_G	a	g	0.1452	-0.19	0.0484	8.78E-05	--	
 </pre>
 
-Next an akw code will parse your file to free up chr and position from the first column, append chr to newly formed first column, remove alleles, and perform comparison of your file and dbSNP MySQL data using 3 different hash tables in awk. Script will output a file of your input snps with rsID appended to it, separated by tab and save it as $1.rsID, $1 being first parameter provided to the script that should be the file name containing SNPs. 
+Next an akw code will parse your file to free up chr and position from the first column, append chr to newly formed first column, remove alleles, and perform comparison of your file and dbSNP MySQL data using 4 different hash tables in awk. Script will output a file of your input snps with rsID appended to it, separated by tab and save it as $1.rsID, $1 being first parameter provided to the script that should be the file name containing SNPs. 
+
+**chrPos2rsID will check if dbSNP file exists and if it is parsed into categories, and if not it will download it from mySQL and parse the file into insertion, SNPs plus simple deletions, and large deletions, that will be proccessed with a separate code and at the end merged into a single output.**
+
+<pre>
+-rw-rw-r-- 1 mpjanic mpjanic 494M Dec 14 18:48 snp147Common.bed
+-rw-rw-r-- 1 mpjanic mpjanic  24M Mar 29 12:41 snp147Common.bed.insertions
+-rw-rw-r-- 1 mpjanic mpjanic 455M Mar 29 12:41 snp147Common.bed.snp.plus.simple.deletions
+-rw-rw-r-- 1 mpjanic mpjanic  16M Mar 29 12:41 snp147Common.bed.large.deletions
+</pre>
 
 Script preserves the header of the original file and adds 'rsID' as a first field and prepends it to the output file.  
 
@@ -76,7 +85,7 @@ MarkerName	Allele1	Allele2	Freq1	Effect	StdErr	P-value	Direction
 
 ./chrPos2rsID.sh SNP.file
 
-head SNP.file.rsID
+head SNP.file.rsID.final
 rsID	chr	position	Allele1	Allele2	Freq1	Effect	StdErr	P-value	Direction	
 rs2985	chr6	34845648	t	c	0.8545	0.1959	0.0484	5.11E-05	++	
 rs2092428	chr6	34883363	a	g	0.146	-0.1927	0.0484	6.96E-05	--	
