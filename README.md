@@ -25,6 +25,24 @@ MarkerName	Allele1	Allele2	Freq1	Effect	StdErr	P-value	Direction
 
 Next an akw code will parse your file to free up chr and position from the first column, append chr to newly formed first column, remove alleles, and perform comparison of your file and dbSNP MySQL data using 4 different hash tables in awk. Script will output a file of your input snps with rsID appended to it, separated by tab and save it as $1.rsID, $1 being first parameter provided to the script that should be the file name containing SNPs. 
 
+MySQL download will produce a file snp147Common.bed, with 14,815,821 SNPs:
+<pre>
+head snp147Common.bed
+chr1	10177	10177	rs367896724
+chr1	10352	10352	rs555500075
+chr1	11007	11008	rs575272151
+chr1	11011	11012	rs544419019
+chr1	13109	13110	rs540538026
+chr1	13115	13116	rs62635286
+chr1	13117	13118	rs62028691
+chr1	13272	13273	rs531730856
+chr1	13417	13417	rs777038595
+chr1	14463	14464	rs546169444
+
+mpjanic@zoran:~/rsID2Bed$ wc -l snp147Common.bed 
+14815821 snp147Common.bed
+</pre>
+
 **chrPos2rsID will check if dbSNP file exists and if it is parsed into categories, and if not it will download it from mySQL and parse the file into insertion (same base pair coordinates), SNPs plus simple deletions (single base pair coordinates), and large deletions (more than 1 base pair difference in the coordinates), that will be proccessed with a separate code and at the end merged into a single output.**
 
 <pre>
@@ -71,24 +89,6 @@ chr1	701779	701783	rs201234755
 Script preserves the header of the original file and adds 'rsID' as a first field and prepends it to the output file.  
 
 Output file will be placed in ~/chrPos2rsID
-
-MySQL download will produce a file snp147Common.bed, with 14,815,821 SNPs:
-<pre>
-head snp147Common.bed
-chr1	10177	10177	rs367896724
-chr1	10352	10352	rs555500075
-chr1	11007	11008	rs575272151
-chr1	11011	11012	rs544419019
-chr1	13109	13110	rs540538026
-chr1	13115	13116	rs62635286
-chr1	13117	13118	rs62028691
-chr1	13272	13273	rs531730856
-chr1	13417	13417	rs777038595
-chr1	14463	14464	rs546169444
-
-mpjanic@zoran:~/rsID2Bed$ wc -l snp147Common.bed 
-14815821 snp147Common.bed
-</pre>
 
 **Running**
 
